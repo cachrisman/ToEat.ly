@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>ToEat.ly</title>
-  <meta charset="utf-8" />
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-  <!-- Underscore -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- ToEat.ly -->
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
-  <script src="../js/app.js"></script>
+    <title>Charlie's ToEat.ly</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <!-- Underscore -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- ToEat.ly -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script src="../js/app.js"></script>
 </head>
+
 <body>
-  <div id="page-wrapper" class="container">
-    <!-- header -->
-    <header class="page-header">
-      <h1>ToEat.ly <small>Put it in my belly!</small></h1>
-    </header>
-    <!-- all foods! -->
-    <ul class="list-group" id="food-ul">
-    </ul>
-  </div>
+    <div id="page-wrapper" class="well">
+        <!-- header -->
+        <header class="page-header">
+            <h1>ToEat.ly <small>Put it in my belly!</small></h1>
+        </header>
+        <form id="food-form" class="form-inline">
+            <input name="name" type="text" class="form-control" id="new-food" placeholder="Name of food">
+            <input name="yumminess" type="text" class="form-control" id="new-yumminess" placeholder="How yummy?">
+            <button type="submit" class="btn btn-default">Add food</button>
+        </form>
+        <!-- all foods! -->
+        <ul class="list-group" id="food-ul">
+        </ul>
+    </div>
 </body>
-  <!-- Underscore template -->
-  <script type="text/template" id="foods-template">
+<!-- Underscore template -->
+<script type="text/template" id="foods-template">
     <% _.each(collection, function(item){ %>
-      <li class='list-group-item'><%= item.name %>
-        <span class="label label-default"><%= item.yumminess%></span>
-      </li>
-    <% }); %>
-  </script>
+        <li class='list-group-item'>
+            <%= item.name %>
+                <span class="label label-default"><%= item.yumminess %></span><button data-id=<%= item.id %> onclick="Food.delete(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+        </li>
+        <% }); %>
+</script>
+
 </html>
